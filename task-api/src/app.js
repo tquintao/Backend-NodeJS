@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var app_data_source_1 = require("./app-data-source");
 var User_1 = require("./entity/User");
+var cors = require("cors");
 // establish database connection
 app_data_source_1.default
     .initialize()
@@ -51,6 +52,7 @@ app_data_source_1.default
 // create and setup express app
 var app = express();
 app.use(express.json());
+app.use(cors());
 // register routes
 app.get("/users", function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
@@ -130,6 +132,6 @@ app.delete("/users/:id", function (req, res) {
     });
 });
 // start express server
-app.listen(3000, function () {
+app.listen(3333, function () {
     console.log('Servidor Backend em execução...');
 });

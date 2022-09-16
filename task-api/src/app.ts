@@ -2,6 +2,7 @@ import * as express from "express";
 import { Request, Response } from "express";
 import myDataSource from "./app-data-source";
 import { User } from "./entity/User";
+import * as cors from 'cors';
 
 // establish database connection
 myDataSource
@@ -16,6 +17,7 @@ myDataSource
 // create and setup express app
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // register routes
 app.get("/users", async function (req: Request, res: Response) {
@@ -51,6 +53,6 @@ app.delete("/users/:id", async function (req: Request, res: Response) {
 });
 
 // start express server
-app.listen(3000, () => {
+app.listen(3333, () => {
     console.log('Servidor Backend em execução...');
 });
